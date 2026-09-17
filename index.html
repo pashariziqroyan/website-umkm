@@ -3,38 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kopi Paten Kulo</title>
+    <title>Kopi Paten Kulo - Website UMKM</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <main class="page">
+<body id="beranda">
+    <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Navigasi utama">
+        <a class="brand" href="index.html"><span>K</span>PK.</a>
+        <ul>
+          <li><a aria-current="page" href="index.html">Beranda</a></li>
+          <li><a  href="tentang.html">Tentang Kami</a></li>
+          <li><a href="index.html#kontak">Kontak Singkat</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="page" id="konten">
         <section class="hero">
+            <div class="hero-content">
             <p class="eyebrow">UMKM Pekalongan</p>
             <h1>Kopi Paten Kulo</h1>
             <p>Janji Manismu Boleh Luntur, <br> Tapi Rasa Kopi Iki Tetep Paten Lur!</p>
             <button id="btn" type="button">Lihat Promo Hari Ini</button>
+            </div>
+            <img src="assets/images/images.jpg" alt="Kopi Paten Kulo">
         </section>
 
         <section aria-labelledby="produk-title">
             <h2 id="produk-title">Produk Unggulan</h2>
-            <ul class="produk">
-                <li>Kopi Hitam          - Rp100.000</li>
-                <li>Kopi Setengah Hitam - Rp150.000</li>
-                <li>Kopi Tidak Hitam    - Rp300.000</li>
-            </ul>
-
-        </section>
-
-        <section class="jam">
-            <h2 id="title">Jam Buka & Lokasi</h2>
-            <div class="info">
-            <p>Jam Operasional: Setiap Hari 24 Jam</p>
-            <p>Lokasi:
-            Jl. Raya Sragi, Pekalongan</p>
+            <div class="produk-list">
+                <article class="produk-card">
+                    <img src="assets/images/kopi1.jpg" alt="Kopi Hitam">
+                    <div class="produk-info">
+                    <h3>Kopi Hitam</h3>
+                    <p class="harga">Rp50.000</p>
+                    <p>Rasa Kopi Hitam Pahit Banget Pekat Banget</p>
+                    </div>
+                </article>
+                <article class="produk-card">
+                    <img src="assets/images/kopi3.jpg" alt="Kopi Setengah Hitam">
+                    <div class="produk-info">
+                    <h3>Kopi Setengah Hitam</h3>
+                    <p class="harga">Rp150.000</p>
+                    <p>Rasa Kopi Setengah Hitam Setengah Pahit Pekat</p>
+                    </div>
+                </article>
+                <article class="produk-card">
+                    <img src="assets/images/kopi2.png" alt="Kopi Tidak Hitam">
+                    <div class="produk-info">
+                    <h3>Kopi Tidak Hitam</h3>
+                    <p class="harga">Rp200.000</p>
+                    <p>Rasa Kopi Tidak Hitam Tidak Pahit Tidak Pekat</p>
+                    </div>
+                </article>
             </div>
         </section>
 
+        <aside class="tambahan">
+            <h2>Baru Pertama Kali Ke Kopi Paten Kulo?</h2>
+            <p>Cobain Dulu Kopi Setengah Hitam - Kopi Ini Rasanya Enak Mantap Dan Cocok Untuk Diminum   .</p>
+        </aside>
+
+        <section class="kontak" id="kontak">
+            <h2 id="Kontak-title">Jam Operasional & Lokasi</h2>
+            <div class="kontak-card">
+            <div class="alamat">
+                <h3>Alamat Cafe</h3>
+                <p>Jl. Raya Sragi, Pekalongan</p>
+            </div>
+            <div class="jamop">
+                <h3>Jam Operasional</h3>
+                <p>Setiap Hari (06.00 - 23.00 WIB)</p>
+            </div>
+            <div class="layanan">
+                <h3>Layanan</h3>
+                <p>Hubungi Kami Via <br>
+                <a href="https://wa.me/6285641363739" target="_blank">
+                     WhatsApp Kopi Paten Kulo</a></p>
+            </div>
+            </div>
+        </section>
     </main>
+    <footer>
+        <p>&copy; 2026 Kopi Paten Kulo. Data pada halaman ini bersifat dummy.</p>
+    </footer>
     <script src="js/script.js"></script>
 </body>
 </html> 
