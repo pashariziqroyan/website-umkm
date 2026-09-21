@@ -38,16 +38,18 @@ body {
     list-style: none; 
 }
  .nav ul li a {
+    font-weight: 500;
     text-decoration: none;
-    color: white;
+    color: #8d5a3b;
     font-size: 16px;
-    background: #8d5a3b;
     padding: 10px 15px;
     border-radius: 12px;
+    transition: all .3s ease;
  }
 
  .nav ul li a:hover {
     text-decoration: underline;
+    background: #8d5a3b4f;
  }
 
 .nav ul li { 
@@ -57,6 +59,18 @@ body {
 }
 .nav a[aria-current="page"] { 
     font-weight: 750; 
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    background: #8d5a3b;
+    padding: 10px 15px;
+    border-radius: 12px;
+}
+
+.nav a[aria-current="page"]:hover {
+    background: #8d5a3b;
+    color: white;
+    text-decoration: none;
 }
 
 a:focus-visible,
@@ -93,6 +107,19 @@ button:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
     margin-right: 120px;
 }
 
+.hero-content-produk {
+    margin-left: 70px;
+}
+
+.hero-content-produk span {
+    color: white;
+    font-weight: 700;
+}
+
+.hero-content-galeri {
+    margin-right: 140px;
+}
+
 .hero p {
     line-height: 1.5;
 }
@@ -101,6 +128,18 @@ button:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
     margin: 0 0 8px; 
     letter-spacing: 0.20em;
     text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    width: fit-content;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+.eyebrow-tentang {
+    margin: 0 0 8px; 
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+
 }
 
 button {
@@ -120,6 +159,10 @@ button {
     margin-top: 40px;
 }
 
+.foto-produk {
+    margin-top: 40px;
+}
+
 #produk-title {
     border-bottom: 1px solid #8d5a3b;
     padding-bottom: 10px;
@@ -129,19 +172,108 @@ button {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 40px;
+    gap: 15px;
 }
+
+.produk-list-foto {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
 .produk-card {
-    width: 31%;
+    width: 25%;
     background: white;
     overflow: hidden;
     border-radius: 12px;
     border: 1px solid #8d5a3b;
+    
 }
 
 .produk-card img {
     width: 100%;
-    height: 150px;
+    height: 200px;
     object-fit: cover;    
+}
+
+.new {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.new p {
+    margin-right: 5px;
+    background: green;
+    padding: 5px 10px;
+    border-radius: 12px;
+    color: white;
+}
+
+.produk-card .info-baru {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+#tim-title {
+    border-bottom: 1px solid #8d5a3b;
+    padding-bottom: 10px;
+}
+
+.tim {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.produk-card-tim {
+    width: 50%;
+    height: 350px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #8d5a3b;
+}
+
+.produk-card-tim img {
+    width: 100%;
+    height: 86%;
+    object-fit: cover;
+}
+
+.produk-card-tim figcaption {
+    padding: 10px 10px 10px 20px;
+}
+
+.suasana-kedai {
+    margin-top: 40px;
+}
+
+#suasana-title {
+    border-bottom: 1px solid #8d5a3b;
+    padding-bottom: 10px;
+}
+
+.produk-card-suasana {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #8d5a3b;
+}
+
+.produk-card-suasana img {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+}
+
+.produk-card-suasana figcaption {
+    padding: 10px;
+    text-align: center;
 }
 
 .produk-info {
@@ -149,11 +281,12 @@ button {
 }
 
 .harga {
-    background: #8d5a3b;
-    width: 32%;
+    margin-top: 0;
+    background: #b4785392;
+    width: fit-content;
     border-radius: 12px;
-    color: white;
     padding: 10px;
+    color: #2a2622;
 }
 
 /* Akhir Section Produk */
@@ -166,7 +299,7 @@ aside {
     border-radius: 12px;
     border: 1px solid #2a2622;
     border-right: 5px solid #2a2622;
-    border-top: 6px solid #2a2622;
+    border-top: 5px solid #2a2622;
     color: #2a2622;
 }
 /* Akhir Aside */
@@ -174,6 +307,7 @@ aside {
 /* Bagian Section Jam & Alamat */
 .kontak {
     margin-top: 40px;
+    padding-bottom: 40px;
 }
 .kontak h2 {
     border-bottom: 1px solid #8d5a3b;
@@ -236,7 +370,7 @@ aside {
 /* bagian Section Nilai Halaman 2 */
 [aria-labelledby="nilai-title"] {
     margin-top: 40px;
-    margin-bottom: 20px;
+    padding-bottom: 40px;
 }
 
 .box-nilai {
@@ -311,3 +445,182 @@ footer {
     background: white; 
 }
 /* Akhir Footer 2 Halaman */
+
+.kategori {
+    margin-top: 40px;
+}
+
+.kategori-title {
+    border-bottom: 1px solid #8d5a3b;
+    padding-bottom: 10px;
+}
+.kategori-produk {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.kategori-produk p {
+    width: 100%;
+    background: white;
+    box-shadow: 0 0 1px #8d5a3b;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 0;
+    color: #8d5a3b;
+}
+
+.header-harga {
+    margin-top: 40px;
+}
+.header-harga h2 {
+    margin-bottom: 15px;
+}
+
+.header-harga p {
+    margin-top: 0;
+    border-bottom: 1px solid #8d5a3b;
+    padding-bottom: 10px;
+}
+
+/* Section Tabel */
+[aria-labelledby="harga-title"] {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+}
+
+.tabel {
+  border: 1px solid #8d5a3b;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: white;
+  text-align: left;
+}
+
+.tabel table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabel caption {
+  text-align: left;
+  font-size: 1.125rem;
+  font-weight: bold;
+  padding: 16px 24px;
+  color: #1a1a1a;
+  background-color: #f6f0e8;
+}
+
+.tabel .caption-box {
+    background-color: white;
+}
+
+.tabel thead tr.title {
+  background-color: #8d5a3b;
+  color: #ffffff;
+}
+
+.tabel th, .tabel td {
+  padding: 16px 24px;
+}
+
+.tabel tbody tr td,
+.tabel tbody tr th {
+  border-top: 1px solid #e2d2c1;
+}
+
+.tabel tbody td:last-child {
+  font-weight: bold;
+  color: #8d5a3b;
+}
+
+.half-black {
+    background-color: #f6f0e8;
+}
+
+.white {
+    background-color: #f6f0e8;
+}
+
+.black {
+    background-color: #f6f0e8;
+}
+
+.not-black {
+    background-color: #f6f0e8;
+}
+/* Akhir Tabel */
+
+
+img { 
+    max-width: 100%; 
+    height: auto; 
+}
+figure { 
+    margin: 0 0 24px; 
+}
+
+figcaption {
+    padding: 10px 20px;
+    color: #8d5a3b;
+}
+
+[aria-labelledby="audio-title"] {
+    margin-top: 40px;
+    padding-bottom: 40px;
+}
+
+#audio-title {
+    border-bottom: 1px solid #8d5a3b;
+    padding-bottom: 10px;
+}
+
+.audio {
+    background: white;
+    padding: 10px 20px 20px 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 1px #8d5a3b;
+}
+
+.audio p {
+    padding-left: 10px;
+    color: #8d5a3b;
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#video-title {
+    border-bottom: 1px solid #8d5a3b;
+    padding-bottom: 10px;
+}
+
+[aria-labelledby="video-title"] {
+    margin-top: 30px;
+}
+
+.video {
+  width: 95%;
+  background: white;
+  padding: 20px 20px 10px 20px;
+  border-radius: 12px;
+  align-items: center;
+}
+
+.video video {
+  display: block;
+  margin: 0 auto;
+  width: 95%;
+  border-radius: 14px;  
+  box-shadow: 5px 5px 0 #2a2622;
+  background: #f6f0e8;
+}
+
+.video figcaption {
+  margin-top: 15px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #5f5148;
+}
