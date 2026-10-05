@@ -1,11 +1,15 @@
 const form = document.querySelector("#form-kontak");
-const preview = document.querySelector("#preview-form");
+const previewDemo = document.querySelector("#preview-demo");
+const previewForm = document.querySelector("#preview-form");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-
   const data = new FormData(form);
-  preview.textContent = [
+
+  previewDemo.textContent = "Pesan Berhasil Terkirim";
+  previewDemo.style.display = "block";
+
+  previewForm.textContent = [
     `Nama: ${data.get("nama")}`,
     `Email: ${data.get("email")}`,
     `WhatsApp: ${data.get("WhatsApp")}`,
