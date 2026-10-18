@@ -1,5 +1,5 @@
-/* =================================================ur
-   1. ROOT VARIABLES & GLOBAL STYLES
+/* =================================================
+   1. ROOT & GLOBAL
    ================================================= */
 :root {
   /* Warna */
@@ -30,7 +30,7 @@
 
   /* Hover */
   --hover: #8d5a3b4f;
-  --hover-strong: #4c2511; 
+  --hover-strong: #4c2511;
 }
 
 *,
@@ -39,8 +39,12 @@
   box-sizing: border-box;
 }
 
+html {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
 body {
-  padding: 0;
   margin: 0;
   color: var(--color-text);
   background: var(--color-surface-soft);
@@ -50,17 +54,18 @@ body {
 }
 
 img {
+  display: block;
   max-width: 100%;
   height: auto;
 }
 
 figure {
+  min-width: 0;
   margin: 0 0 var(--space-4);
 }
 
 figcaption {
   padding: var(--space-2);
-  color: var(--color-text);
 }
 
 h1,
@@ -71,7 +76,8 @@ h3 {
 }
 
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+.table-scroll:focus-visible {
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
 }
@@ -88,11 +94,19 @@ button:focus-visible {
 .skip-link:focus {
   top: var(--space-1);
   left: var(--space-1);
+  z-index: 1000;
 }
 
 /* =================================================
    2. NAVBAR
    ================================================= */
+.nav,
+.page {
+  width: 100%;
+  max-width: 57rem;
+  margin: 0 auto;
+}
+
 .site-header {
   padding: var(--space-3);
   background: var(--color-surface);
@@ -100,88 +114,81 @@ button:focus-visible {
 }
 
 .nav {
-  max-width: 57rem;
-  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-2);
 }
 
 .brand {
   display: inline-block;
   color: var(--color-primary);
+  font-size: 2rem;
   font-weight: 800;
-  font-size: 2rem;  
   text-decoration: none;
 }
 
 .brand span {
-  font-size: 2.5rem;
   color: var(--color-text);
+  font-size: 2.5rem;
 }
 
 .nav ul {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-1);
-  list-style: none;
-} 
-
-.nav ul li {
-  display: flex;
-  margin-right: var(--space-2);
   align-items: center;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.nav ul li a {
-  color: var(--color-primary);
+.nav li {
+  display: flex;
+  align-items: center;
+  margin-right: var(--space-2);
+}
+
+.nav li a {
+  display: inline-block;
   padding: var(--space-2);
-  border-radius: var(--radius-md);
+  color: var(--color-primary);
   font-weight: 500;
   text-decoration: none;
+  border-radius: var(--radius-md);
   transition: all 0.3s ease;
 }
 
-.nav ul li a:hover {
+.nav li a:hover {
   text-decoration: underline;
   background: var(--hover);
 }
 
-.nav a {
-  color: #4b2715; 
-}
-
-.nav a[aria-current="page"] {
+/* Halaman aktif (ditaruh setelah :hover agar tetap menang saat di-hover) */
+.nav li a[aria-current="page"] {
+  color: var(--color-surface);
   font-weight: 750;
   text-decoration: none;
-  color: var(--color-surface);
   background: var(--color-primary);
-  padding: var(--space-2);
-  border-radius: var(--radius-md);
-}
-
-.nav a[aria-current="page"]:hover {
-  background: var(--color-primary);
-  color: var(--color-surface);
-  text-decoration: none;
 }
 
 /* =================================================
-   3. HERO SECTION
+   3. HERO
    ================================================= */
 .page {
-  max-width: 57rem;
-  margin: 0 auto;
-  padding: var(--space-5);
-}
-
-[aria-labelledby="produk-title"] {
-  margin-top: var(--space-5);
+  padding: var(--space-3);
 }
 
 .hero {
-  padding: var(--space-5);
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-width: 0;
+  padding: var(--space-4);
   color: var(--color-surface);
   background: linear-gradient(
     135deg,
@@ -189,19 +196,17 @@ button:focus-visible {
     var(--color-primary)
   );
   border-radius: var(--radius-md);
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  align-items: center;
-  justify-content: center;
 }
 
 .hero img {
-  width: 85%;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   border-radius: var(--radius-md);
 }
 
 .hero-content {
-  margin-left: var(--space-4);
+  min-width: 0;
 }
 
 .hero-content-produk span {
@@ -209,47 +214,32 @@ button:focus-visible {
   font-weight: 700;
 }
 
-.hero-content-galeri {
-  margin-right: var(--space-5);
+.eyebrow,
+.eyebrow-tentang {
+  margin: 0 0 var(--space-1);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
 .eyebrow {
-  margin: 0 0 var(--space-1);
-  letter-spacing: 0.20em;
-  text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.2);
-  padding: var(--space-2);
   width: fit-content;
+  max-width: 100%;
+  padding: var(--space-2);
+  background: rgb(255 255 255 / 0.2);
   border-radius: var(--radius-md);
-  white-space: nowrap;
-}
-
-.eyebrow-tentang {
-  margin: 0 0 var(--space-1);
-  letter-spacing: 0.20em;
-  text-transform: uppercase;
 }
 
 /* =================================================
-   4. BUTTONS
+   4. TOMBOL
    ================================================= */
-button {
-  padding: 12px 18px;
-  color: #2f2118;
-  font-weight: 700;
-  cursor: pointer;
-  background: #ffd166;
-  border: 0;
-  border-radius: 999px;
-}
-
 .button,
 button {
-  background: var(--color-primary);
+  max-width: 100%;
   padding: var(--space-3);
   color: var(--color-surface);
   font-weight: 700;
   cursor: pointer;
+  background: var(--color-primary);
   border: 1px solid var(--color-primary-strong);
   border-radius: var(--radius-btn);
   transition: all 0.3s ease;
@@ -260,521 +250,169 @@ button:hover {
   background: var(--hover-strong);
 }
 
-.hero button { 
-  color: var(--color-text); 
-  background: #fef3c7; 
+.hero button {
+  color: var(--color-text);
+  background: #fef3c7;
 }
 
-.hero button:hover { 
-  color: var(--color-text); 
-  background: #fde68a; 
+.hero button:hover {
+  background: #fde68a;
 }
 
 /* =================================================
-   5. PRODUK & CARD SECTION
+   5. KARTU & GRID (dipakai bersama)
    ================================================= */
-.foto-produk {
-  margin-top: var(--space-5);
-}
 
-#produk-title { 
-  border-bottom: 1px solid var(--color-primary);
-  padding-bottom: var(--space-2);
+/* Grid 2 kolom */
+.produk-list,
+.layout-grid,
+.galery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
 }
 
 .produk-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  justify-content: space-around;
-  align-items: center;
+  align-items: stretch;
   margin-bottom: var(--space-5);
-  gap: var(--space-4);
 }
 
-.produk-card {
+/* Dasar semua kartu */
+.produk-card,
+.produk-card-tim,
+.produk-card-suasana,
+.product-paket,
+.audio,
+.video,
+.tabel,
+[aria-labelledby="tentang-title"] {
+  min-width: 0;
+  background: var(--color-surface);
   border: 1px solid var(--color-primary);
   border-radius: var(--radius-md);
-  background: var(--color-surface);
+}
+
+/* Kartu dengan bayangan */
+.produk-card,
+.produk-card-tim,
+.produk-card-suasana,
+.audio,
+.video {
   box-shadow: var(--shadow-card);
+}
+
+/* Kartu dengan gambar yang dipotong rapi */
+.produk-card,
+.produk-card-tim,
+.produk-card-suasana,
+.tabel {
   overflow: hidden;
 }
 
-.produk-card .info-baru {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.produk-info {
-  padding: var(--space-3);
+/* Gambar kartu produk, tim, dan suasana (tinggi mengikuti rasio, bukan tinggi tetap) */
+.produk-card img,
+.produk-card-tim img,
+.produk-card-suasana img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
 }
 
 .harga {
-  margin-top: 0;
-  background: var(--color-primary);
   width: fit-content;
-  border-radius: var(--radius-sm);
+  max-width: 100%;
+  margin-top: 0;
   padding: var(--space-2);
   color: var(--color-surface);
   font-weight: bold;
+  background: var(--color-primary);
+  border-radius: var(--radius-sm);
 }
 
-.catalog { 
-  gap: var(--space-3); 
-}
-
-.layout-grid { 
-  display: grid; 
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-4);
-}
-
-.layout-flex { 
-  display: flex; 
-  flex-wrap: wrap; 
-}
-
-.layout-flex .product-card { 
-  flex: 1 1 12rem; 
-}
-
+/* Paket pilihan */
 .product-paket {
   position: relative;
   display: flex;
   flex-direction: column;
   padding: var(--space-3);
-  background: var(--color-surface);
-  border: 1px solid var(--color-primary);
-  border-radius: 0.75rem;
+}
+
+.product-paket img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
 }
 
 .badge {
   position: absolute;
-  inset-block-start: 2.3rem;
-  inset-inline-end: var(--space-5 );
-  padding: 0.2rem 0.75rem;
-  background: var(--color-primary);
+  inset-block-start: var(--space-4);
+  inset-inline-end: var(--space-5);
+  max-width: calc(100% - 1.5rem);
+  padding: 0.25rem var(--space-2);
   color: var(--color-surface);
-  border-radius: 999px;
-  font-size: var(--space-2);
+  font-size: 0.75rem;
   font-weight: 800;
+  background: var(--color-primary);
+  border-radius: var(--radius-btn);
 }
 
-.card-actions { 
+.card-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   gap: var(--space-2);
-  justify-content: space-between; 
-  margin-top: auto; 
-}
-
-.card-btn {
-  border: 1px solid var(--color-primary);
-  border-radius: 0.5rem;
-  padding: var(--space-1) var(--space-2);
-  color: var(--color-text);
-  background: var(--color-surface);
-  font: inherit;
-  text-decoration: none;
-  cursor: pointer;
+  margin-top: auto;
 }
 
 .card-actions a {
   color: var(--color-primary);
 }
 
-/* =================================================
-   6. TIM & SUASANA KEDAI
-   ================================================= */
-#tim-title {
-  border-bottom: 1px solid var(--color-primary);
-  padding-bottom: var(--space-2);
+.card-btn {
+  max-width: 100%;
+  padding: var(--space-1) var(--space-2);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  background: var(--color-surface);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
 }
 
-.galery-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: var(--space-4);
-}
-
-.produk-card-tim,.produk-card-suasana  {
-  height: 350px;
+/* Kartu info ringan (kategori & kontak) */
+.kategori-produk p,
+.kontak-card {
+  min-width: 0;
+  padding: var(--space-4);
   background: var(--color-surface);
   border-radius: var(--radius-md);
-  overflow: hidden;
-  border: 1px solid var(--color-primary);
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 0 1px var(--color-primary);
 }
 
-.produk-card-tim img {
-  width: 100%;
-  height: 86%;
-  object-fit: cover;
-}
-
-.produk-card-tim figcaption {
-  padding: var(--space-2);
-}
-
-.suasana-kedai {
-  margin-top: var(--space-5);
-}
-
-#suasana-title {
-  border-bottom: 1px solid var(--color-primary);
-  padding-bottom: var(--space-2);
-}
-
-.produk-card-suasana img {
-  width: 100%;
-  height: 86%;
-  object-fit: cover;
-}
-
-.produk-card-suasana figcaption {
-  padding: var(--space-2);
-}
-
-/* =================================================
-   7. HALAMAN TENTANG & NILAI (HALAMAN 2)
-   ================================================= */
-[aria-labelledby="tentang-title"] {
-  background-color: var(--color-surface);
-  padding: var(--space-5);
-  color: var(--color-text);
-  border: 1px solid var(--color-primary);
-  border-radius: var(--radius-md);
-  text-align: center;
-  align-items: center;
-}
-
-.tentang-img {
-  width: 50%;
-  border-radius: var(--radius-md);
-  border: 2px solid var(--color-surface);
-}
-
-.desc {
-  margin-bottom: var(--space-5);
-}
-
-[aria-labelledby="nilai-title"] {
-  margin-top: var(--space-5);
-  padding-bottom: var(--space-5);
-}
-
-#nilai-title {
-  border-bottom: 1px solid var(--color-primary);
-  padding-bottom: var(--space-2);
-}
-
-.box-nilai {
+.kategori-produk,
+.kontak-card {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: stretch;
   gap: var(--space-3);
 }
 
-.nilai-card {
-  flex: 1;
-  background: var(--color-surface-soft);
-  padding: var(--space-3);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-text);
-  border-right: 5px solid var(--color-text);
-  border-bottom: 6px solid var(--color-text);
-  color: var(--color-text);
-}
-
-.nilai-card h3 {
-  margin-bottom: var(--space-2);
-}
-
-.nilai-card p {
-  margin-top: 0;
-  font-weight: 100;
-}
-
-/* =================================================
-   8. KATEGORI & TABEL HARGA
-   ================================================= */
-.kategori {
-  margin-top: var(--space-5);
-}
-
-.kategori-title {
-  border-bottom: 1px solid var(--color-primary);
-  padding-bottom: var(--space-2);
-}
-
-.kategori-produk {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
 .kategori-produk p {
-  width: 100%;
-  background: var(--color-surface);
-  box-shadow: 0 0 1px var(--color-primary);
-  padding: var(--space-4);
-  border-radius: var(--radius-md);
+  flex: 1;
   margin: 0;
   color: var(--color-primary);
 }
 
-.header-harga {
-  margin-top: 4rem;
-}
-
-.header-harga h2 {
-  margin-bottom: var(--space-2);
-}
-
-.header-harga p {
-  margin-top: 0;
-  border-bottom: 1px solid var(--color-primary);
-  padding-bottom: var(--space-2);
-}
-
-[aria-labelledby="harga-title"] {
-  margin-bottom: var(--space-5);
-  padding-bottom: var(--space-5);
-}
-
-.tabel {
-  border: 1px solid var(--color-primary);
-  border-radius: var(--radius-md);
-  background-color: var(--color-surface);
-  overflow: hidden;
-  text-align: left;
-}
-
-.tabel table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.tabel caption {
-  text-align: left;
-  font-weight: bold;
-  padding: var(--space-3);
-  color: var(--color-text);
-  background-color: var(--color-surface-soft);
-}
-
-.tabel .caption-box {
-  background-color: var(--color-surface);
-}
-
-.tabel thead tr.title {
-  background-color: var(--color-primary);
-  color: var(--color-surface);
-}
-
-.tabel th,
-.tabel td {
-  padding: var(--space-3);
-}
-
-.tabel tbody tr td,
-.tabel tbody tr th {
-  border-top: 1px solid var(--color-border);
-}
-
-.tabel tbody td:last-child {
-  font-weight: bold;
-  color: var(--color-primary);
-}
-
-.half-black,
-.white,
-.black,
-.not-black {
-  background-color: var(--color-surface-soft);
-}
-
-/* =================================================
-   9. MEDIA (AUDIO & VIDEO)
-   ================================================= */
-[aria-labelledby="audio-title"] {
-  margin-top: var(--space-5);
-  padding-bottom: var(--space-5);
-}
-
-#audio-title {
-  border-bottom: 1px solid var(--color-primary);
-  padding-bottom: var(--space-2);
-}
-
-.audio {
-  background: var(--color-surface);
-  padding: var(--space-3);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  border: 1px solid var(--color-primary);
-}
-
-.audio p {
-  padding-left: var(--space-2);
-  color: var(--color-primary);
-}
-
-audio {
-  width: 100%;
-  margin-top: var(--space-2);
-}
-
-#video-title {
-  border-bottom: 1px solid var(--color-primary);
-  padding-bottom: var(--space-2);
-}
-
-[aria-labelledby="video-title"] {
-  margin-top: var(--space-4);
-}
-
-.video {
-  width: 95%;
-  background: var(--color-surface);
-  padding: var(--space-3);
-  border-radius: var(--radius-md);
-  align-items: center;
-  box-shadow: var(--shadow-card);
-  border: 1px solid var(--color-primary);
-}
-
-.video video {
-  display: block;
-  margin: 0 auto;
-  width: 95%;
-  border-radius: var(--radius-md);
-  box-shadow: var(--space-1) var(--space-1) 0 var(--color-text);
-  background: var(--color-surface-soft);
-}
-
-.video figcaption {
-  margin-top: var(--space-2);
-  color: var(--color-muted);
-}
-
-/* =================================================
-   10. FORM, ASIDE, & KONTAK
-   ================================================= */
-.field {
-  display: grid;
-  gap: var(--space-1);
-  margin-bottom: var(--space-2);
-}
-
-.field label {
-  display: block;
-  margin-bottom: var(--space-1);
-}
-
-fieldset {
-  display: grid;
-  gap: var(--space-1);
-  margin: 0 0 var(--space-2);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-}
-
-#preview-form {
-  padding: var(--space-3);
-  white-space: pre-wrap;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-}
-
-form,
-pre {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-3);
-}
-
-label,
-legend {
-  font-weight: 700;
-}
-
-input,
-select,
-textarea {
-  font: inherit;
-  padding: var(--space-2);
-}
-
-#preview-demo {
-  display: none;
-  width: 50%;
-  padding: var(--space-3);
-  border-radius: var(--radius-md);
-  background: var(--color-surface-soft);
-  border: 2px solid var(--color-success);
-  color: var(--color-text);
-  font-weight: bold;
-}
-
-.prev {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.prev p {
-  margin-left: var(--space-3);
-  font-weight: 100;
-  color: var(--color-text);
-  opacity: 0.5;
-}
-
-aside {
-  margin-top: var(--space-5);
-  background: var(--color-surface-soft);
-  padding: var(--space-3);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-text);
-  border-right: 5px solid var(--color-text);
-  border-top: 5px solid var(--color-text);
-  color: var(--color-text);
-}
-
-.kontak {
-  margin-top: var(--space-5);
-  padding-bottom: var(--space-5);
-}
-
-.kontak h2 {
-  border-bottom: 1px solid var(--color-primary);
-  padding-bottom: var(--space-2);
-}
-
-.kontak-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--color-surface);
-  box-shadow: 0 0 1px var(--color-primary);
-  padding: var(--space-4);
-  border-radius: var(--radius-md);
-}
-
 .kontak-card h3 {
-  color: var(--color-primary);
   margin-bottom: var(--space-2);
+  color: var(--color-primary);
 }
 
 .kontak-card p {
-  font-weight: 100;
   margin-top: 0;
-}
-
-.jamop {
-  margin-right: var(--space-4);
+  font-weight: 400;
 }
 
 .layanan a {
@@ -783,18 +421,439 @@ aside {
 }
 
 /* =================================================
+   6. JUDUL & JARAK ANTAR SECTION
+   ================================================= */
+
+/* Judul bergaris bawah */
+#produk-title,
+#tim-title,
+#suasana-title,
+#nilai-title,
+#audio-title,
+#video-title,
+.kategori-title,
+.kontak h2 {
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-primary);
+}
+
+/* Jarak atas antar section */
+.suasana-kedai,
+.kategori,
+.header-harga,
+.kontak,
+aside,
+[aria-labelledby="produk-title"],
+[aria-labelledby="nilai-title"],
+[aria-labelledby="audio-title"] {
+  margin-top: var(--space-5);
+}
+
+[aria-labelledby="video-title"] {
+  margin-top: var(--space-4);
+}
+
+/* Jarak bawah antar section */
+.kontak,
+[aria-labelledby="nilai-title"],
+[aria-labelledby="audio-title"],
+[aria-labelledby="harga-title"] {
+  padding-bottom: var(--space-5);
+}
+
+/* =================================================
+   7. TENTANG & NILAI
+   ================================================= */
+[aria-labelledby="tentang-title"] {
+  padding: var(--space-3);
+  color: var(--color-text);
+  text-align: center;
+}
+
+.tentang-img {
+  width: 80%;
+  margin-inline: auto;
+  border: 2px solid var(--color-surface);
+  border-radius: var(--radius-md);
+}
+
+.desc {
+  margin-bottom: var(--space-5);
+}
+
+.box-nilai {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-3);
+}
+
+.nilai-card {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-3);
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-text);
+  border-right: 5px solid var(--color-text);
+  border-bottom: 6px solid var(--color-text);
+  border-radius: var(--radius-md);
+}
+
+.nilai-card h3 {
+  margin-bottom: var(--space-2);
+}
+
+.nilai-card p {
+  margin-top: 0;
+}
+
+/* =================================================
+   8. TABEL HARGA
+   ================================================= */
+[aria-labelledby="harga-title"] {
+  min-width: 0;
+  margin-bottom: var(--space-5);
+}
+
+.header-harga h2 {
+  margin-bottom: var(--space-2);
+}
+
+.header-harga p {
+  margin-top: 0;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* .tabel punya overflow: hidden, jadi lebarnya harus dijaga di sini
+   supaya yang menggulir adalah .table-scroll (bukan terpotong) */
+.table-scroll .tabel,
+.table-scroll table {
+  min-width: 40rem;
+}
+
+.table-scroll table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabel caption {
+  padding: var(--space-3);
+  color: var(--color-text);
+  font-weight: bold;
+  text-align: left;
+  background: var(--color-surface-soft);
+}
+
+.tabel .caption-box {
+  background: var(--color-surface);
+}
+
+.tabel thead tr.title {
+  color: var(--color-surface);
+  background: var(--color-primary);
+}
+
+.tabel th,
+.tabel td {
+  padding: var(--space-3);
+  text-align: left;
+}
+
+.tabel tbody th,
+.tabel tbody td {
+  border-top: 1px solid var(--color-border);
+}
+
+.tabel tbody td:last-child {
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.half-black,
+.white,
+.black,
+.not-black {
+  background: var(--color-surface-soft);
+}
+
+/* =================================================
+   9. AUDIO & VIDEO
+   ================================================= */
+.audio,
+.video {
+  padding: var(--space-3);
+}
+
+.audio {
+  width: 100%;
+}
+
+.audio p {
+  padding-left: var(--space-2);
+  color: var(--color-primary);
+}
+
+audio {
+  display: block;
+  width: 100%;
+  margin-top: var(--space-2);
+}
+
+.video {
+  width: 95%;
+  max-width: 100%;
+}
+
+.video video {
+  display: block;
+  width: 95%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  background: var(--color-surface-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--space-1) var(--space-1) 0 var(--color-text);
+}
+
+.video figcaption {
+  margin-top: var(--space-2);
+  color: var(--color-muted);
+}
+
+/* =================================================
+   10. FORM & ASIDE
+   ================================================= */
+form,
+pre {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0 0 var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+#preview-form {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+label,
+legend {
+  font-weight: 700;
+}
+
+.field {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+  margin-bottom: var(--space-2);
+}
+
+.field label {
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: var(--space-2);
+  color: var(--color-text);
+  font: inherit;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+fieldset {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+  margin: 0 0 var(--space-2);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+legend {
+  padding-inline: var(--space-1);
+}
+
+/* Radio & checkbox: tombol di kiri, teks di kanan */
+.field-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-1);
+  min-width: 0;
+  margin-bottom: var(--space-1);
+}
+
+.field-checkbox input {
+  flex: 0 0 1rem;
+  width: 1rem;
+  height: 1rem;
+  min-width: 1rem;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.field-checkbox label {
+  display: inline-block;
+  min-width: 0;
+  margin: 0;
+  font-weight: 400;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+/* Tombol & keterangan preview */
+.prev {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.prev p {
+  min-width: 0;
+  margin: 0;
+  font-weight: 400;
+  opacity: 0.7;
+  overflow-wrap: anywhere;
+}
+
+#preview-demo {
+  display: none;
+  width: 100%;
+  max-width: 100%;
+  padding: var(--space-3);
+  color: var(--color-text);
+  font-weight: bold;
+  overflow-wrap: anywhere;
+  background: var(--color-surface-soft);
+  border: 2px solid var(--color-success);
+  border-radius: var(--radius-md);
+}
+
+aside {
+  padding: var(--space-3);
+  color: var(--color-text);
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-text);
+  border-top: 5px solid var(--color-text);
+  border-right: 5px solid var(--color-text);
+  border-radius: var(--radius-md);
+}
+
+/* =================================================
    11. FOOTER
    ================================================= */
 footer {
   padding: var(--space-2);
   color: var(--color-surface);
-  background: var(--color-primary);
   text-align: center;
+  background: var(--color-primary);
 }
 
 .site-footer {
   padding: var(--space-3);
   color: var(--color-primary);
-  text-align: center;
   background: var(--color-surface);
+}
+
+@media (min-width: 42rem) {
+  .page {
+    padding: var(--space-5);
+  }
+
+  .produk-list,
+  .layout-grid,
+  .galery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kategori-produk {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  [aria-labelledby="tentang-title"] {
+    padding: var(--space-5);
+  }
+
+  .tentang-img {
+    width: 50%;
+  }
+
+  #preview-demo {
+    width: 50%;
+  }
+}
+
+@media (min-width: 48rem) {
+  .hero {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: var(--space-5);
+  }
+
+  .hero img {
+    width: 85%;
+  }
+
+  .hero-content {
+    margin-left: var(--space-4);
+  }
+
+  .hero-content-galeri {
+    margin-right: var(--space-5);
+  }
+
+  .box-nilai {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 60rem) {
+  .eyebrow {
+    white-space: nowrap;
+  }
+
+  .kontak-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .jamop {
+    margin-right: var(--space-4);
+  }
 }
