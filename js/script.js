@@ -1,6 +1,8 @@
-const promoButton = document.querySelector("#btn");
+const toggle = document.querySelector(".nav-toggle");
+const menu = document.getElementById("menu-utama");
 
-promoButton.addEventListener("click", () => {
-  promoButton.textContent = "Promo: Beli 2 gratis 1!";
-  console.log("Promo berhasil ditampilkan.");
+toggle.addEventListener("click", () => {
+  const open = menu.classList.toggle("is-open");
+  toggle.textContent = open ? "✕" : "☰";
+  toggle.setAttribute("aria-label", open ? "Tutup menu" : "Buka menu");
 });

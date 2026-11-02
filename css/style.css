@@ -134,7 +134,7 @@ button:focus-visible,
   font-size: 2.5rem;
 }
 
-.nav ul {
+/* .nav ul {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -142,7 +142,7 @@ button:focus-visible,
   margin: 0;
   padding: 0;
   list-style: none;
-}
+} */
 
 .nav li {
   display: flex;
@@ -152,11 +152,11 @@ button:focus-visible,
 
 .nav li a {
   display: inline-block;
-  padding: var(--space-2);
+  padding: var(--space-2) var(--space-3);
   color: var(--color-primary);
   font-weight: 500;
   text-decoration: none;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   transition: all 0.3s ease;
 }
 
@@ -205,7 +205,8 @@ button:focus-visible,
   border-radius: var(--radius-md);
 }
 
-.hero-content {
+.hero-content,
+.hero-content-produk {
   min-width: 0;
 }
 
@@ -263,13 +264,13 @@ button:hover {
    5. KARTU & GRID (dipakai bersama)
    ================================================= */
 
-/* Grid 2 kolom */
+/* Grid */
 .produk-list,
 .layout-grid,
 .galery-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .produk-list {
@@ -337,6 +338,16 @@ button:hover {
   padding: var(--space-3);
 }
 
+.product-paket h2,
+.product-paket h3 {
+  margin-top: 0;
+  padding-inline-end: 4.5rem; /* ruang untuk badge */
+}
+
+.product-paket p {
+  margin-top: 0;
+}
+
 .product-paket img {
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -346,10 +357,10 @@ button:hover {
 
 .badge {
   position: absolute;
-  inset-block-start: var(--space-4);
-  inset-inline-end: var(--space-5);
+  inset-block-start: var(--space-3);
+  inset-inline-end: var(--space-3);
   max-width: calc(100% - 1.5rem);
-  padding: 0.25rem var(--space-2);
+  padding: 0.3rem var(--space-2);
   color: var(--color-surface);
   font-size: 0.75rem;
   font-weight: 800;
@@ -359,26 +370,33 @@ button:hover {
 
 .card-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-2);
+  gap: var(--space-1);
   margin-top: auto;
 }
 
 .card-actions a {
   color: var(--color-primary);
+  font-size: var(--space-3);
+  line-height: 1.3;
+}
+
+.card-actions a:not(.card-btn) {
+  text-align: right;
 }
 
 .card-btn {
-  max-width: 100%;
-  padding: var(--space-1) var(--space-2);
+  flex-shrink: 0;
+  padding: 0.4rem 0.75rem;
   font: inherit;
+  font-size: var(--space-3);
   text-decoration: none;
+  white-space: nowrap;
   cursor: pointer;
   background: var(--color-surface);
   border: 1px solid var(--color-primary);
-  border-radius: var(--radius-sm);
 }
 
 /* Kartu info ringan (kategori & kontak) */
@@ -432,7 +450,8 @@ button:hover {
 #audio-title,
 #video-title,
 .kategori-title,
-.kontak h2 {
+.kontak h2,
+#produk-dinamis-title {
   padding-bottom: var(--space-2);
   border-bottom: 1px solid var(--color-primary);
 }
@@ -445,7 +464,8 @@ button:hover {
 aside,
 [aria-labelledby="produk-title"],
 [aria-labelledby="nilai-title"],
-[aria-labelledby="audio-title"] {
+[aria-labelledby="audio-title"],
+[aria-labelledby="produk-dinamis-title"] {
   margin-top: var(--space-5);
 }
 
@@ -790,14 +810,137 @@ footer {
   background: var(--color-surface);
 }
 
+/* =================================================
+   12. PRODUK DARI DATA JAVASCRIPT
+   ================================================= */
+.js-product-grid {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: 1fr;
+}
+
+#produk-ringkasan {
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+}
+
+.js-product-card {
+  min-width: 0;
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.js-product-card p {
+  margin: var(--space-2) 0 var(--space-1);
+}
+
+.js-product-card .price {
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+.stock-badge {
+  display: inline-flex;
+  margin-block-start: 0.75rem;
+  padding: 0.3rem 1rem;
+  color: #166534;
+  font-size: 0.8rem;
+  font-weight: 800;
+  background: #dcfce7;
+  border-radius: 999px;
+}
+
+.stock-badge.warning {
+  color: #92400e;
+  background: #fef3c7;
+}
+
+.stock-badge.empty {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.product-header h3 {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.badge-unggulan {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: #fef08a;
+  color: #854d0e;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.nav-toggle {
+  display: block;
+  padding: 0.45rem 0.7rem;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  line-height: 1.3;
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+}
+
+.nav-toggle:hover {
+  background: var(--color-surface-soft);
+}
+
+.nav ul {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+}
+
+.nav ul.is-open {
+  display: flex;
+  align-items: stretch;
+  text-align: left;
+  border-top: 1px solid var(--color-primary);
+  padding: var(--space-3) 10px 0;
+  margin-bottom: 0;
+  text-decoration: underline;
+  row-gap: var(--space-1);
+}
+
+.nav ul.is-open li a {
+  width: 100%;
+
+}
+/* =================================================
+   13. RESPONSIF
+   ================================================= */
 @media (min-width: 42rem) {
   .page {
     padding: var(--space-5);
   }
-
   .produk-list,
-  .layout-grid,
   .galery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .layout-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .catalog {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -829,7 +972,8 @@ footer {
     width: 85%;
   }
 
-  .hero-content {
+  .hero-content,
+  .hero-content-produk {
     margin-left: var(--space-4);
   }
 
@@ -840,9 +984,35 @@ footer {
   .box-nilai {
     flex-direction: row;
   }
+
+  .js-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav ul {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+  }
+
+  .nav ul.is-open {
+    align-items: center;
+    border-top: 0;
+    padding: 0;
+    row-gap: var(--space-1);
+  }
 }
 
 @media (min-width: 60rem) {
+
+  .js-product-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .eyebrow {
     white-space: nowrap;
   }
