@@ -1,27 +1,31 @@
 const produkUmkm = [
-  { 
-    nama: "Kopi Black", 
-    harga: 50000, 
-    stok: 1, 
-    unggulan: true 
+  {
+    nama: "Kopi Black",
+    kategori: "Kopi Hitam",
+    harga: 50000,
+    stok: 1,
+    unggulan: true,
   },
-  { 
-    nama: "Kopi Half Black", 
-    harga: 150000, 
-    stok: 12, 
-    unggulan: false
+  {
+    nama: "Kopi Half Black",
+    kategori: "Kopi Hitam",
+    harga: 150000,
+    stok: 12,
+    unggulan: false,
   },
-  { 
-    nama: "Kopi Not Black", 
-    harga: 200000, 
-    stok: 0, 
-    unggulan: false 
+  {
+    nama: "Kopi Not Black",
+    kategori: "Kopi Hitam",
+    harga: 200000,
+    stok: 0,
+    unggulan: false,
   },
-  { 
-    nama: "Kopi White", 
-    harga: 250000, 
-    stok: 10, 
-    unggulan: false
+  {
+    nama: "Kopi White",
+    kategori: "Kopi Putih",
+    harga: 250000,
+    stok: 10,
+    unggulan: false,
   },
 ];
 
@@ -72,6 +76,7 @@ function renderProduk() {
           <h3>${produk.nama}</h3>
           ${badgeUnggulan}
         </div>
+        <p>${produk.kategori}</p>
         <p class="price">${formatRupiah.format(produk.harga)}</p>
         <span class="stock-badge ${status.className}">${status.label}</span>
         <p>${labelAksi}</p>
